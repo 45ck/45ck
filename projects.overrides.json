@@ -66,6 +66,7 @@
     "Languages": ["TypeScript", "JavaScript", "Go", "Python", "C#", "C++", "Java", "PHP"],
     "Frontend": ["Astro", "React", "Next.js", "Tailwind CSS"],
     "Backend": ["Node.js", "Postgres", "Drizzle ORM"],
+    "AI Engineering": ["LLMs", "Agents", "Evals", "RAG", "Prompting"],
     "Infra": ["Terraform", "AWS"],
     "Testing": ["Vitest", "Playwright", "Storybook"],
     "Product": ["Stripe", "Clerk", "Resend"]

@@ -8,12 +8,12 @@ Manual edits to README.md will be overwritten.
 </p>
 
 <p align="center">
-  <i>Shipping web apps and dev tools. Clean architecture, DX, and real-world automation.</i>
+  <i>Full-stack product engineering + AI engineering. Fast prototypes, production discipline.</i>
 </p>
 
 ## 👋 Hey, I'm Calvin (@45ck)
 
-I build **production-grade web apps** and **developer tools** with a focus on clean architecture, DX, and shipping.
+I'm a **full-stack AI / product engineer**. I like building prototypes that turn into real systems: clean architecture, good DX, and measurable outcomes.
 
 ### 🔗 Links
 
