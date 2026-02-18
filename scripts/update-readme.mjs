@@ -123,65 +123,47 @@ function renderToolbox(overrides) {
   return rows.join('\n');
 }
 
-function renderFeaturedProjects(featured, repoByName) {
-  if (!Array.isArray(featured) || featured.length === 0) {
-    return '_Add entries in `projects.overrides.json` under `featured`._';
-  }
+function renderWorkingOn({ overrides, activeRepos }) {
+  const featured = Array.isArray(overrides?.featured) ? overrides.featured : [];
+  const featuredMap = new Map(
+    featured
+      .filter((f) => f && typeof f.repo === 'string' && f.repo.length > 0)
+      .map((f) => [f.repo, f])
+  );
+
+  const repos = Array.isArray(activeRepos) ? activeRepos : [];
 
   const rows = [];
-  rows.push('| Project | Why it matters | Stack | Stars |');
-  rows.push('| --- | --- | --- | ---: |');
+  rows.push('| Repo | What it is | Stack | Stars | Topics |');
+  rows.push('| --- | --- | --- | ---: | --- |');
 
-  for (const entry of featured) {
-    const repoName = entry?.repo;
-    if (!repoName) continue;
-    const repo = repoByName.get(repoName);
-    if (!repo) continue;
+  for (const repo of repos) {
+    const entry = featuredMap.get(repo.name);
 
     const url = repo.html_url;
     const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
 
     const tagline = (entry?.tagline || repo.description || '').trim();
     const highlights = Array.isArray(entry?.highlights) ? entry.highlights.filter(Boolean) : [];
-    const why = [tagline, ...highlights].filter(Boolean).join(' · ');
+    const what = [tagline, ...highlights].filter(Boolean).join(' · ');
 
     const stack = Array.isArray(entry?.stack) && entry.stack.length
       ? entry.stack.map((s) => `\`${s}\``).join(' ')
       : (repo.language ? `\`${repo.language}\`` : '');
 
+    const topics = Array.isArray(repo.topics) && repo.topics.length
+      ? repo.topics.slice(0, 8).map((t) => `\`${t}\``).join(' ')
+      : '';
+
+    const name = entry ? `🔥 ${repo.name}` : repo.name;
+
     rows.push(
-      `| [\`${escapePipes(repo.name)}\`](${url}) | ${escapePipes(why)} | ${stack} | ⭐ ${stars} |`
+      `| [\`${escapePipes(name)}\`](${url}) | ${escapePipes(what)} | ${stack} | ⭐ ${stars} | ${topics} |`
     );
   }
 
-  if (rows.length === 2) return '_No featured projects found._';
+  if (rows.length === 2) return '_No active public repos found._';
   return rows.join('\n');
-}
-
-function renderWorkingOn({ overrides, repoByName, activeRepos }) {
-  const featured = Array.isArray(overrides?.featured) ? overrides.featured : [];
-  const featuredNames = new Set(featured.map((f) => f?.repo).filter(Boolean));
-
-  const featuredTable = renderFeaturedProjects(featured, repoByName);
-
-  const otherActive = Array.isArray(activeRepos)
-    ? activeRepos.filter((r) => r && !featuredNames.has(r.name))
-    : [];
-
-  const otherActiveTable = renderTable(otherActive);
-
-  const parts = [];
-  parts.push('### ⭐ Featured (curated)');
-  parts.push('');
-  parts.push(featuredTable);
-  parts.push('');
-  parts.push('<details>');
-  parts.push('<summary>More active public repos</summary>');
-  parts.push('');
-  parts.push(otherActiveTable);
-  parts.push('</details>');
-
-  return parts.join('\n');
 }
 
 async function ghFetchJson(url, token) {
@@ -245,8 +227,6 @@ async function main() {
   // Sort newest push first for readability.
   publicRepos.sort((a, b) => (b.pushed_at || '').localeCompare(a.pushed_at || ''));
 
-  const repoByName = new Map(publicRepos.map((r) => [r.name, r]));
-
   const active = [];
   const inactive = [];
 
@@ -279,7 +259,7 @@ async function main() {
     .replace('{{LINKS}}', renderLinks(overrides))
     .replace('{{TOOLBOX}}', renderToolbox(overrides))
     .replace('{{CLOSED_SOURCE_PRODUCTS}}', renderClosedSourceProducts(overrides))
-    .replace('{{WORKING_ON}}', renderWorkingOn({ overrides, repoByName, activeRepos: active }))
+    .replace('{{WORKING_ON}}', renderWorkingOn({ overrides, activeRepos: active }))
     .replace('{{INACTIVE_REPOS}}', inactiveTable)
     .replace('{{UPDATED_AT}}', updatedAt);
 

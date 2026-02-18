@@ -4,7 +4,7 @@ Manual edits to README.md will be overwritten.
 -->
 
 <p align="center">
-  <img src="./assets/banner.svg" alt="Calvin Kennedy banner" width="100%" />
+  <img src="./assets/banner.gif" alt="Calvin Kennedy banner" width="100%" />
 </p>
 
 <p align="center">
