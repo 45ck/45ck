@@ -104,7 +104,9 @@ function renderFeaturedProjects(featured, repoByName) {
     return '_Add entries in `projects.overrides.json` under `featured`._';
   }
 
-  const blocks = [];
+  const rows = [];
+  rows.push('| Project | Why it matters | Stack | Stars | Last push |');
+  rows.push('| --- | --- | --- | ---: | --- |');
 
   for (const entry of featured) {
     const repoName = entry?.repo;
@@ -113,32 +115,24 @@ function renderFeaturedProjects(featured, repoByName) {
     if (!repo) continue;
 
     const url = repo.html_url;
-    const tagline = entry?.tagline || repo.description || '';
-    const pushed = repo.pushed_at ? isoDate(new Date(repo.pushed_at)) : '';
-    const lang = repo.language || '';
     const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
-    const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 8) : [];
+    const pushed = repo.pushed_at ? isoDate(new Date(repo.pushed_at)) : '';
 
-    blocks.push([
-      `### 🔥 [\`${repo.name}\`](${url})`,
-      '',
-      `${tagline}`.trim(),
-      '',
-      `- ⭐ Stars: **${stars}**`,
-      `- 🧠 Primary language: **${lang || 'n/a'}**`,
-      `- ⏱️ Last push: **${pushed || 'n/a'}**`,
-      topics.length ? `- 🏷️ Topics: ${topics.map((t) => `\`${t}\``).join(' ')}` : null,
-      Array.isArray(entry?.highlights) && entry.highlights.length
-        ? `- ✅ Highlights: ${entry.highlights.map((h) => escapePipes(h)).join(' · ')}`
-        : null,
-      Array.isArray(entry?.stack) && entry.stack.length
-        ? `- 🧰 Stack: ${entry.stack.map((s) => `\`${s}\``).join(' ')}`
-        : null,
-      '',
-    ].filter(Boolean).join('\n'));
+    const tagline = (entry?.tagline || repo.description || '').trim();
+    const highlights = Array.isArray(entry?.highlights) ? entry.highlights.filter(Boolean) : [];
+    const why = [tagline, ...highlights].filter(Boolean).join(' · ');
+
+    const stack = Array.isArray(entry?.stack) && entry.stack.length
+      ? entry.stack.map((s) => `\`${s}\``).join(' ')
+      : (repo.language ? `\`${repo.language}\`` : '');
+
+    rows.push(
+      `| [\`${escapePipes(repo.name)}\`](${url}) | ${escapePipes(why)} | ${stack} | ⭐ ${stars} | ${pushed} |`
+    );
   }
 
-  return blocks.join('\n');
+  if (rows.length === 2) return '_No featured projects found._';
+  return rows.join('\n');
 }
 
 async function ghFetchJson(url, token) {

@@ -37,38 +37,12 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 
 ## ✨ Featured Projects
 
-### 🔥 [`content-machine`](https://github.com/45ck/content-machine)
-Automated content pipelines: generate, validate, and evaluate.
-- ⭐ Stars: **4**
-- 🧠 Primary language: **TypeScript**
-- ⏱️ Last push: **2026-02-17**
-- 🏷️ Topics: `ai-content-creation` `automation` `cli` `content-machine` `npm` `remotion` `short-form-video` `shorts`
-- ✅ Highlights: CLI-first workflow with quality gates and evals · Designed for repeatable, auditable outputs
-- 🧰 Stack: `TypeScript` `Node.js`
-### 🔥 [`demo-machine`](https://github.com/45ck/demo-machine)
-Demo-as-code: YAML specs to polished product demo videos.
-- ⭐ Stars: **0**
-- 🧠 Primary language: **TypeScript**
-- ⏱️ Last push: **2026-02-15**
-- 🏷️ Topics: `automation` `cli` `cursor-animation` `demo` `demo-as-code` `ffmpeg` `playwright` `product-demo`
-- ✅ Highlights: Cursor animation + typing simulation · FFmpeg-driven rendering pipeline
-- 🧰 Stack: `TypeScript` `Node.js` `FFmpeg`
-### 🔥 [`terraform-provider-discord`](https://github.com/45ck/terraform-provider-discord)
-Terraform provider for Discord servers (no clickops).
-- ⭐ Stars: **0**
-- 🧠 Primary language: **Go**
-- ⏱️ Last push: **2026-02-11**
-- 🏷️ Topics: `devops` `discord` `golang` `hashicorp` `infrastructure-as-code` `terraform` `terraform-provider`
-- ✅ Highlights: Infrastructure-as-code workflows for Discord · Maintained fork with practical ops focus
-- 🧰 Stack: `Go` `Terraform`
-### 🔥 [`terraform-provider-googleforms`](https://github.com/45ck/terraform-provider-googleforms)
-Terraform provider for Google Forms with optional Drive/Sheets helpers.
-- ⭐ Stars: **0**
-- 🧠 Primary language: **Go**
-- ⏱️ Last push: **2026-02-11**
-- 🏷️ Topics: `golang` `google-drive` `google-forms` `google-sheets` `terraform` `terraform-provider`
-- ✅ Highlights: Infra-as-code for forms and integrations · Provider development in Go
-- 🧰 Stack: `Go` `Terraform`
+| Project | Why it matters | Stack | Stars | Last push |
+| --- | --- | --- | ---: | --- |
+| [`content-machine`](https://github.com/45ck/content-machine) | Automated content pipelines: generate, validate, and evaluate. · CLI-first workflow with quality gates and evals · Designed for repeatable, auditable outputs | `TypeScript` `Node.js` | ⭐ 4 | 2026-02-17 |
+| [`demo-machine`](https://github.com/45ck/demo-machine) | Demo-as-code: YAML specs to polished product demo videos. · Cursor animation + typing simulation · FFmpeg-driven rendering pipeline | `TypeScript` `Node.js` `FFmpeg` | ⭐ 0 | 2026-02-15 |
+| [`terraform-provider-discord`](https://github.com/45ck/terraform-provider-discord) | Terraform provider for Discord servers (no clickops). · Infrastructure-as-code workflows for Discord · Maintained fork with practical ops focus | `Go` `Terraform` | ⭐ 0 | 2026-02-11 |
+| [`terraform-provider-googleforms`](https://github.com/45ck/terraform-provider-googleforms) | Terraform provider for Google Forms with optional Drive/Sheets helpers. · Infra-as-code for forms and integrations · Provider development in Go | `Go` `Terraform` | ⭐ 0 | 2026-02-11 |
 
 ---
 
@@ -105,4 +79,4 @@ Terraform provider for Google Forms with optional Drive/Sheets helpers.
 
 ---
 
-_Last updated: 2026-02-18 01:04 UTC_
+_Last updated: 2026-02-18 01:07 UTC_
