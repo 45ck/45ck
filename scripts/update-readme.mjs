@@ -63,7 +63,8 @@ function renderLinks(overrides) {
   }
 
   if (links.vibecoord?.url) {
-    parts.push(`- 🧠 VibeCoord: ${links.vibecoord.url}`);
+    const label = links.vibecoord?.label || 'Vibecord';
+    parts.push(`- 🧠 ${label}: ${links.vibecoord.url}`);
   }
 
   if (links.primaryEmail?.value) {
@@ -74,6 +75,30 @@ function renderLinks(overrides) {
   parts.push('- 🧾 Tip: if email spam becomes annoying, I rotate aliases and keep forms behind a honeypot.');
 
   return parts.join('\n');
+}
+
+function renderClosedSourceProducts(overrides) {
+  const products = overrides?.closedSourceProducts;
+  if (!Array.isArray(products) || products.length === 0) {
+    return '_No closed-source products listed._';
+  }
+
+  const rows = [];
+  rows.push('| Product | What it is | Stack | Status |');
+  rows.push('| --- | --- | --- | --- |');
+
+  for (const p of products) {
+    const name = p?.name || '';
+    const url = p?.url || '';
+    const tagline = (p?.tagline || '').trim();
+    const stack = Array.isArray(p?.stack) ? p.stack.map((s) => `\`${s}\``).join(' ') : '';
+    const status = (p?.status || '').trim();
+
+    const productCell = url ? `[${escapePipes(name)}](${url})` : escapePipes(name);
+    rows.push(`| ${productCell} | ${escapePipes(tagline)} | ${stack} | ${escapePipes(status)} |`);
+  }
+
+  return rows.join('\n');
 }
 
 function renderToolbox(overrides) {
@@ -229,6 +254,7 @@ async function main() {
   const rendered = template
     .replace('{{LINKS}}', renderLinks(overrides))
     .replace('{{TOOLBOX}}', renderToolbox(overrides))
+    .replace('{{CLOSED_SOURCE_PRODUCTS}}', renderClosedSourceProducts(overrides))
     .replace('{{FEATURED_PROJECTS}}', renderFeaturedProjects(overrides?.featured, repoByName))
     .replace('{{ACTIVE_REPOS}}', activeTable)
     .replace('{{INACTIVE_REPOS}}', inactiveTable)

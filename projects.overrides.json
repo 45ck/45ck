@@ -11,10 +11,19 @@
       "note": "public"
     },
     "vibecoord": {
-      "label": "VibeCoord",
+      "label": "Vibecord",
       "url": "https://vibecord.dev"
     }
   },
+  "closedSourceProducts": [
+    {
+      "name": "Vibecord",
+      "url": "https://vibecord.dev",
+      "tagline": "Closed-source product (details + demos live on the site).",
+      "stack": ["TypeScript", "Node.js", "Web"],
+      "status": "Active"
+    }
+  ],
   "featured": [
     {
       "repo": "content-machine",
@@ -62,4 +71,3 @@
     "Product": ["Stripe", "Clerk", "Resend"]
   }
 }
-

@@ -25,6 +25,12 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 
 ---
 
+## 🔒 Closed-Source Products
+
+{{CLOSED_SOURCE_PRODUCTS}}
+
+---
+
 ## ✨ Featured Projects
 
 {{FEATURED_PROJECTS}}

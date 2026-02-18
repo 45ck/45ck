@@ -18,7 +18,7 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 ### 🔗 Links
 
 - 🌐 Portfolio: https://calvinkennedy.com (domain setup in progress)
-- 🧠 VibeCoord: https://vibecord.dev
+- 🧠 Vibecord: https://vibecord.dev
 - ✉️ Email: ajax@aquinus.net (public)
 - 🧾 Tip: if email spam becomes annoying, I rotate aliases and keep forms behind a honeypot.
 
@@ -32,6 +32,14 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 | Infra | `Terraform` `AWS` |
 | Testing | `Vitest` `Playwright` `Storybook` |
 | Product | `Stripe` `Clerk` `Resend` |
+
+---
+
+## 🔒 Closed-Source Products
+
+| Product | What it is | Stack | Status |
+| --- | --- | --- | --- |
+| [Vibecord](https://vibecord.dev) | Closed-source product (details + demos live on the site). | `TypeScript` `Node.js` `Web` | Active |
 
 ---
 
@@ -79,4 +87,4 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 
 ---
 
-_Last updated: 2026-02-18 01:07 UTC_
+_Last updated: 2026-02-18 01:13 UTC_
