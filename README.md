@@ -7,23 +7,68 @@ Manual edits to README.md will be overwritten.
   <img src="./assets/banner.svg" alt="Calvin Kennedy banner" width="100%" />
 </p>
 
+<p align="center">
+  <i>Shipping web apps and dev tools. Clean architecture, DX, and real-world automation.</i>
+</p>
+
 ## 👋 Hey, I'm Calvin (@45ck)
 
 I build **production-grade web apps** and **developer tools** with a focus on clean architecture, DX, and shipping.
 
 ### 🔗 Links
 
-- 🌐 Portfolio: https://calvinkennedy.com
+- 🌐 Portfolio: https://calvinkennedy.com (domain setup in progress)
 - 🧠 VibeCoord: https://vibecord.dev
-- ✉️ Email: hello@calvinkennedy.com
+- ✉️ Email: ajax@aquinus.net (public)
+- 🧾 Tip: if email spam becomes annoying, I rotate aliases and keep forms behind a honeypot.
 
 ### 🧰 Toolbox
 
-- 🟦 TypeScript, Node.js
-- ⚛️ React, Astro, Tailwind
-- 🗄️ Postgres (Neon), Drizzle
-- 💳 Stripe, 🔐 Clerk, ✉️ Resend
-- 🧱 Terraform, AWS
+| Area | Tools |
+| --- | --- |
+| Languages | `TypeScript` `JavaScript` `Go` `Python` `C#` `C++` `Java` `PHP` |
+| Frontend | `Astro` `React` `Next.js` `Tailwind CSS` |
+| Backend | `Node.js` `Postgres` `Drizzle ORM` |
+| Infra | `Terraform` `AWS` |
+| Testing | `Vitest` `Playwright` `Storybook` |
+| Product | `Stripe` `Clerk` `Resend` |
+
+---
+
+## ✨ Featured Projects
+
+### 🔥 [`content-machine`](https://github.com/45ck/content-machine)
+Automated content pipelines: generate, validate, and evaluate.
+- ⭐ Stars: **4**
+- 🧠 Primary language: **TypeScript**
+- ⏱️ Last push: **2026-02-17**
+- 🏷️ Topics: `ai-content-creation` `automation` `cli` `content-machine` `npm` `remotion` `short-form-video` `shorts`
+- ✅ Highlights: CLI-first workflow with quality gates and evals · Designed for repeatable, auditable outputs
+- 🧰 Stack: `TypeScript` `Node.js`
+### 🔥 [`demo-machine`](https://github.com/45ck/demo-machine)
+Demo-as-code: YAML specs to polished product demo videos.
+- ⭐ Stars: **0**
+- 🧠 Primary language: **TypeScript**
+- ⏱️ Last push: **2026-02-15**
+- 🏷️ Topics: `automation` `cli` `cursor-animation` `demo` `demo-as-code` `ffmpeg` `playwright` `product-demo`
+- ✅ Highlights: Cursor animation + typing simulation · FFmpeg-driven rendering pipeline
+- 🧰 Stack: `TypeScript` `Node.js` `FFmpeg`
+### 🔥 [`terraform-provider-discord`](https://github.com/45ck/terraform-provider-discord)
+Terraform provider for Discord servers (no clickops).
+- ⭐ Stars: **0**
+- 🧠 Primary language: **Go**
+- ⏱️ Last push: **2026-02-11**
+- 🏷️ Topics: `devops` `discord` `golang` `hashicorp` `infrastructure-as-code` `terraform` `terraform-provider`
+- ✅ Highlights: Infrastructure-as-code workflows for Discord · Maintained fork with practical ops focus
+- 🧰 Stack: `Go` `Terraform`
+### 🔥 [`terraform-provider-googleforms`](https://github.com/45ck/terraform-provider-googleforms)
+Terraform provider for Google Forms with optional Drive/Sheets helpers.
+- ⭐ Stars: **0**
+- 🧠 Primary language: **Go**
+- ⏱️ Last push: **2026-02-11**
+- 🏷️ Topics: `golang` `google-drive` `google-forms` `google-sheets` `terraform` `terraform-provider`
+- ✅ Highlights: Infra-as-code for forms and integrations · Provider development in Go
+- 🧰 Stack: `Go` `Terraform`
 
 ---
 
@@ -31,7 +76,7 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 
 | Repo | What it is | Lang | Stars | Last push | Topics |
 | --- | --- | --- | ---: | --- | --- |
-| [`45ck`](https://github.com/45ck/45ck) | Config files for my GitHub profile. |  | ⭐ 0 | 2026-02-18 | `config` `github-config` |
+| [`45ck`](https://github.com/45ck/45ck) | Config files for my GitHub profile. | JavaScript | ⭐ 0 | 2026-02-18 | `config` `github-config` |
 | [`content-machine`](https://github.com/45ck/content-machine) | CLI-first automated short-form video generator for TikTok, Reels, and Shorts (npm: @45ck/content-machine) | TypeScript | ⭐ 4 | 2026-02-17 | `ai-content-creation` `automation` `cli` `content-machine` `npm` `remotion` |
 | [`Portarium`](https://github.com/45ck/Portarium) | Open-source multi-tenant control plane for governable business operations (VAOP architecture) | TypeScript | ⭐ 0 | 2026-02-17 |  |
 | [`demo-machine`](https://github.com/45ck/demo-machine) | Demo as code — turn YAML specs into polished product demo videos with smooth cursor animation, natural typing, and professional overlays | TypeScript | ⭐ 0 | 2026-02-15 | `automation` `cli` `cursor-animation` `demo` `demo-as-code` `ffmpeg` |
@@ -60,5 +105,4 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 
 ---
 
-_Last updated: 2026-02-18 00:58 UTC_
-
+_Last updated: 2026-02-18 01:04 UTC_

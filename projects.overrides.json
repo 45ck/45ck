@@ -1,0 +1,65 @@
+{
+  "links": {
+    "portfolio": {
+      "label": "Portfolio",
+      "url": "https://calvinkennedy.com",
+      "note": "domain setup in progress"
+    },
+    "primaryEmail": {
+      "label": "Email",
+      "value": "ajax@aquinus.net",
+      "note": "public"
+    },
+    "vibecoord": {
+      "label": "VibeCoord",
+      "url": "https://vibecord.dev"
+    }
+  },
+  "featured": [
+    {
+      "repo": "content-machine",
+      "tagline": "Automated content pipelines: generate, validate, and evaluate.",
+      "highlights": [
+        "CLI-first workflow with quality gates and evals",
+        "Designed for repeatable, auditable outputs"
+      ],
+      "stack": ["TypeScript", "Node.js"]
+    },
+    {
+      "repo": "demo-machine",
+      "tagline": "Demo-as-code: YAML specs to polished product demo videos.",
+      "highlights": [
+        "Cursor animation + typing simulation",
+        "FFmpeg-driven rendering pipeline"
+      ],
+      "stack": ["TypeScript", "Node.js", "FFmpeg"]
+    },
+    {
+      "repo": "terraform-provider-discord",
+      "tagline": "Terraform provider for Discord servers (no clickops).",
+      "highlights": [
+        "Infrastructure-as-code workflows for Discord",
+        "Maintained fork with practical ops focus"
+      ],
+      "stack": ["Go", "Terraform"]
+    },
+    {
+      "repo": "terraform-provider-googleforms",
+      "tagline": "Terraform provider for Google Forms with optional Drive/Sheets helpers.",
+      "highlights": [
+        "Infra-as-code for forms and integrations",
+        "Provider development in Go"
+      ],
+      "stack": ["Go", "Terraform"]
+    }
+  ],
+  "toolbox": {
+    "Languages": ["TypeScript", "JavaScript", "Go", "Python", "C#", "C++", "Java", "PHP"],
+    "Frontend": ["Astro", "React", "Next.js", "Tailwind CSS"],
+    "Backend": ["Node.js", "Postgres", "Drizzle ORM"],
+    "Infra": ["Terraform", "AWS"],
+    "Testing": ["Vitest", "Playwright", "Storybook"],
+    "Product": ["Stripe", "Clerk", "Resend"]
+  }
+}
+

@@ -7,23 +7,27 @@ Manual edits to README.md will be overwritten.
   <img src="./assets/banner.svg" alt="Calvin Kennedy banner" width="100%" />
 </p>
 
+<p align="center">
+  <i>Shipping web apps and dev tools. Clean architecture, DX, and real-world automation.</i>
+</p>
+
 ## 👋 Hey, I'm Calvin (@45ck)
 
 I build **production-grade web apps** and **developer tools** with a focus on clean architecture, DX, and shipping.
 
 ### 🔗 Links
 
-- 🌐 Portfolio: https://calvinkennedy.com
-- 🧠 VibeCoord: https://vibecord.dev
-- ✉️ Email: hello@calvinkennedy.com
+{{LINKS}}
 
 ### 🧰 Toolbox
 
-- 🟦 TypeScript, Node.js
-- ⚛️ React, Astro, Tailwind
-- 🗄️ Postgres (Neon), Drizzle
-- 💳 Stripe, 🔐 Clerk, ✉️ Resend
-- 🧱 Terraform, AWS
+{{TOOLBOX}}
+
+---
+
+## ✨ Featured Projects
+
+{{FEATURED_PROJECTS}}
 
 ---
 
@@ -38,4 +42,3 @@ I build **production-grade web apps** and **developer tools** with a focus on cl
 ---
 
 _Last updated: {{UPDATED_AT}}_
-

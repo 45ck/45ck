@@ -3,9 +3,14 @@ import path from 'node:path';
 
 const OWNER = '45ck';
 const API_BASE = 'https://api.github.com';
+const OVERRIDES_FILE = 'projects.overrides.json';
 
 function isoDate(d) {
   return d.toISOString().slice(0, 10);
+}
+
+function escapePipes(s) {
+  return String(s || '').replace(/\|/g, '\\|');
 }
 
 function formatRepoRow(repo) {
@@ -19,7 +24,7 @@ function formatRepoRow(repo) {
     ? repo.topics.slice(0, 6).map((t) => `\`${t}\``).join(' ')
     : '';
 
-  return `| [\`${name}\`](${url}) | ${desc} | ${lang} | ⭐ ${stars} | ${pushed} | ${topics} |`;
+  return `| [\`${escapePipes(name)}\`](${url}) | ${escapePipes(desc)} | ${escapePipes(lang)} | ⭐ ${stars} | ${pushed} | ${topics} |`;
 }
 
 function renderTable(repos) {
@@ -33,6 +38,107 @@ function renderTable(repos) {
   ];
 
   return [...header, ...repos.map(formatRepoRow)].join('\n');
+}
+
+async function readOverrides(repoRoot) {
+  const p = path.join(repoRoot, OVERRIDES_FILE);
+  try {
+    const raw = await readFile(p, 'utf8');
+    return JSON.parse(raw);
+  } catch {
+    return {};
+  }
+}
+
+function renderLinks(overrides) {
+  const links = overrides?.links || {};
+
+  const parts = [];
+
+  if (links.portfolio?.url) {
+    const note = links.portfolio?.note ? ` (${links.portfolio.note})` : '';
+    parts.push(`- 🌐 Portfolio: ${links.portfolio.url}${note}`);
+  } else {
+    parts.push('- 🌐 Portfolio: (coming soon)');
+  }
+
+  if (links.vibecoord?.url) {
+    parts.push(`- 🧠 VibeCoord: ${links.vibecoord.url}`);
+  }
+
+  if (links.primaryEmail?.value) {
+    const note = links.primaryEmail?.note ? ` (${links.primaryEmail.note})` : '';
+    parts.push(`- ✉️ Email: ${links.primaryEmail.value}${note}`);
+  }
+
+  parts.push('- 🧾 Tip: if email spam becomes annoying, I rotate aliases and keep forms behind a honeypot.');
+
+  return parts.join('\n');
+}
+
+function renderToolbox(overrides) {
+  const tb = overrides?.toolbox || {};
+  const keys = Object.keys(tb);
+  if (!keys.length) {
+    return [
+      '- 🟦 TypeScript, Node.js',
+      '- ⚛️ React, Astro, Tailwind',
+      '- 🗄️ Postgres, Drizzle',
+      '- 🧱 Terraform, AWS',
+    ].join('\n');
+  }
+
+  const rows = [];
+  rows.push('| Area | Tools |');
+  rows.push('| --- | --- |');
+  for (const area of keys) {
+    const items = Array.isArray(tb[area]) ? tb[area] : [];
+    const rendered = items.map((x) => `\`${x}\``).join(' ');
+    rows.push(`| ${escapePipes(area)} | ${rendered} |`);
+  }
+  return rows.join('\n');
+}
+
+function renderFeaturedProjects(featured, repoByName) {
+  if (!Array.isArray(featured) || featured.length === 0) {
+    return '_Add entries in `projects.overrides.json` under `featured`._';
+  }
+
+  const blocks = [];
+
+  for (const entry of featured) {
+    const repoName = entry?.repo;
+    if (!repoName) continue;
+    const repo = repoByName.get(repoName);
+    if (!repo) continue;
+
+    const url = repo.html_url;
+    const tagline = entry?.tagline || repo.description || '';
+    const pushed = repo.pushed_at ? isoDate(new Date(repo.pushed_at)) : '';
+    const lang = repo.language || '';
+    const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
+    const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 8) : [];
+
+    blocks.push([
+      `### 🔥 [\`${repo.name}\`](${url})`,
+      '',
+      `${tagline}`.trim(),
+      '',
+      `- ⭐ Stars: **${stars}**`,
+      `- 🧠 Primary language: **${lang || 'n/a'}**`,
+      `- ⏱️ Last push: **${pushed || 'n/a'}**`,
+      topics.length ? `- 🏷️ Topics: ${topics.map((t) => `\`${t}\``).join(' ')}` : null,
+      Array.isArray(entry?.highlights) && entry.highlights.length
+        ? `- ✅ Highlights: ${entry.highlights.map((h) => escapePipes(h)).join(' · ')}`
+        : null,
+      Array.isArray(entry?.stack) && entry.stack.length
+        ? `- 🧰 Stack: ${entry.stack.map((s) => `\`${s}\``).join(' ')}`
+        : null,
+      '',
+    ].filter(Boolean).join('\n'));
+  }
+
+  return blocks.join('\n');
 }
 
 async function ghFetchJson(url, token) {
@@ -86,6 +192,8 @@ async function main() {
   const now = new Date();
   const cutoff = subtractMonthsUtc(now, 3);
 
+  const overrides = await readOverrides(repoRoot);
+
   const repos = await listAllRepos({ owner: OWNER, token });
 
   // Public only (never show private in the profile README).
@@ -93,6 +201,8 @@ async function main() {
 
   // Sort newest push first for readability.
   publicRepos.sort((a, b) => (b.pushed_at || '').localeCompare(a.pushed_at || ''));
+
+  const repoByName = new Map(publicRepos.map((r) => [r.name, r]));
 
   const active = [];
   const inactive = [];
@@ -123,6 +233,9 @@ async function main() {
   const updatedAt = `${now.toISOString().slice(0, 16).replace('T', ' ')} UTC`;
 
   const rendered = template
+    .replace('{{LINKS}}', renderLinks(overrides))
+    .replace('{{TOOLBOX}}', renderToolbox(overrides))
+    .replace('{{FEATURED_PROJECTS}}', renderFeaturedProjects(overrides?.featured, repoByName))
     .replace('{{ACTIVE_REPOS}}', activeTable)
     .replace('{{INACTIVE_REPOS}}', inactiveTable)
     .replace('{{UPDATED_AT}}', updatedAt);
@@ -138,4 +251,3 @@ main().catch((err) => {
   console.error(err);
   process.exit(1);
 });
-
