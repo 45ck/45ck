@@ -19,12 +19,11 @@ function formatRepoRow(repo) {
   const desc = (repo.description || '').replace(/\r?\n/g, ' ').trim();
   const lang = repo.language || '';
   const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
-  const pushed = repo.pushed_at ? isoDate(new Date(repo.pushed_at)) : '';
   const topics = Array.isArray(repo.topics) && repo.topics.length
     ? repo.topics.slice(0, 6).map((t) => `\`${t}\``).join(' ')
     : '';
 
-  return `| [\`${escapePipes(name)}\`](${url}) | ${escapePipes(desc)} | ${escapePipes(lang)} | ⭐ ${stars} | ${pushed} | ${topics} |`;
+  return `| [\`${escapePipes(name)}\`](${url}) | ${escapePipes(desc)} | ${escapePipes(lang)} | ⭐ ${stars} | ${topics} |`;
 }
 
 function renderTable(repos) {
@@ -33,8 +32,8 @@ function renderTable(repos) {
   }
 
   const header = [
-    '| Repo | What it is | Lang | Stars | Last push | Topics |',
-    '| --- | --- | --- | ---: | --- | --- |',
+    '| Repo | What it is | Lang | Stars | Topics |',
+    '| --- | --- | --- | ---: | --- |',
   ];
 
   return [...header, ...repos.map(formatRepoRow)].join('\n');
@@ -130,8 +129,8 @@ function renderFeaturedProjects(featured, repoByName) {
   }
 
   const rows = [];
-  rows.push('| Project | Why it matters | Stack | Stars | Last push |');
-  rows.push('| --- | --- | --- | ---: | --- |');
+  rows.push('| Project | Why it matters | Stack | Stars |');
+  rows.push('| --- | --- | --- | ---: |');
 
   for (const entry of featured) {
     const repoName = entry?.repo;
@@ -141,7 +140,6 @@ function renderFeaturedProjects(featured, repoByName) {
 
     const url = repo.html_url;
     const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
-    const pushed = repo.pushed_at ? isoDate(new Date(repo.pushed_at)) : '';
 
     const tagline = (entry?.tagline || repo.description || '').trim();
     const highlights = Array.isArray(entry?.highlights) ? entry.highlights.filter(Boolean) : [];
@@ -152,12 +150,38 @@ function renderFeaturedProjects(featured, repoByName) {
       : (repo.language ? `\`${repo.language}\`` : '');
 
     rows.push(
-      `| [\`${escapePipes(repo.name)}\`](${url}) | ${escapePipes(why)} | ${stack} | ⭐ ${stars} | ${pushed} |`
+      `| [\`${escapePipes(repo.name)}\`](${url}) | ${escapePipes(why)} | ${stack} | ⭐ ${stars} |`
     );
   }
 
   if (rows.length === 2) return '_No featured projects found._';
   return rows.join('\n');
+}
+
+function renderWorkingOn({ overrides, repoByName, activeRepos }) {
+  const featured = Array.isArray(overrides?.featured) ? overrides.featured : [];
+  const featuredNames = new Set(featured.map((f) => f?.repo).filter(Boolean));
+
+  const featuredTable = renderFeaturedProjects(featured, repoByName);
+
+  const otherActive = Array.isArray(activeRepos)
+    ? activeRepos.filter((r) => r && !featuredNames.has(r.name))
+    : [];
+
+  const otherActiveTable = renderTable(otherActive);
+
+  const parts = [];
+  parts.push('### ⭐ Featured (curated)');
+  parts.push('');
+  parts.push(featuredTable);
+  parts.push('');
+  parts.push('<details>');
+  parts.push('<summary>More active public repos</summary>');
+  parts.push('');
+  parts.push(otherActiveTable);
+  parts.push('</details>');
+
+  return parts.join('\n');
 }
 
 async function ghFetchJson(url, token) {
@@ -255,8 +279,7 @@ async function main() {
     .replace('{{LINKS}}', renderLinks(overrides))
     .replace('{{TOOLBOX}}', renderToolbox(overrides))
     .replace('{{CLOSED_SOURCE_PRODUCTS}}', renderClosedSourceProducts(overrides))
-    .replace('{{FEATURED_PROJECTS}}', renderFeaturedProjects(overrides?.featured, repoByName))
-    .replace('{{ACTIVE_REPOS}}', activeTable)
+    .replace('{{WORKING_ON}}', renderWorkingOn({ overrides, repoByName, activeRepos: active }))
     .replace('{{INACTIVE_REPOS}}', inactiveTable)
     .replace('{{UPDATED_AT}}', updatedAt);
 

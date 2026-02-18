@@ -31,15 +31,11 @@ I'm a **full-stack AI / product engineer**. I like building prototypes that turn
 
 ---
 
-## ✨ Featured Projects
+## 🧪 What I'm Working On
 
-{{FEATURED_PROJECTS}}
+{{WORKING_ON}}
 
 ---
-
-## 🚀 Active Public Repos (last 3 months)
-
-{{ACTIVE_REPOS}}
 
 ## 🗃️ Inactive Public Repos (3+ months)
 
