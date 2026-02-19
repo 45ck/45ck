@@ -1,5 +1,6 @@
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import path from 'node:path';
+import { createHash } from 'node:crypto';
 
 const OWNER = '45ck';
 const API_BASE = 'https://api.github.com';
@@ -46,6 +47,18 @@ async function readOverrides(repoRoot) {
     return JSON.parse(raw);
   } catch {
     return {};
+  }
+}
+
+async function bannerCacheBust(repoRoot) {
+  // Keeps GitHub image caching from showing a stale banner.
+  // Only changes when the banner file changes.
+  const p = path.join(repoRoot, 'assets', 'banner.gif');
+  try {
+    const buf = await readFile(p);
+    return createHash('sha256').update(buf).digest('hex').slice(0, 12);
+  } catch {
+    return 'dev';
   }
 }
 
@@ -218,6 +231,7 @@ async function main() {
   const cutoff = subtractMonthsUtc(now, 3);
 
   const overrides = await readOverrides(repoRoot);
+  const bannerBust = await bannerCacheBust(repoRoot);
 
   const repos = await listAllRepos({ owner: OWNER, token });
 
@@ -256,6 +270,7 @@ async function main() {
   const updatedAt = `${now.toISOString().slice(0, 16).replace('T', ' ')} UTC`;
 
   const rendered = template
+    .replace('{{BANNER_CACHE_BUST}}', bannerBust)
     .replace('{{LINKS}}', renderLinks(overrides))
     .replace('{{TOOLBOX}}', renderToolbox(overrides))
     .replace('{{CLOSED_SOURCE_PRODUCTS}}', renderClosedSourceProducts(overrides))

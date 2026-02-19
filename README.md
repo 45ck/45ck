@@ -4,7 +4,7 @@ Manual edits to README.md will be overwritten.
 -->
 
 <p align="center">
-  <img src="./assets/banner.gif" alt="Calvin Kennedy banner" width="100%" />
+  <img src="./assets/banner.gif?v=a88ed6d1cdc0" alt="Calvin Kennedy banner" width="100%" />
 </p>
 
 <p align="center">
@@ -48,10 +48,10 @@ I'm a **full-stack AI / product engineer**. I like building prototypes that turn
 
 | Repo | What it is | Stack | Stars | Topics |
 | --- | --- | --- | ---: | --- |
-| [`45ck`](https://github.com/45ck/45ck) | Config files for my GitHub profile. | `JavaScript` | ⭐ 0 | `config` `github-config` |
-| [`🔥 demo-machine`](https://github.com/45ck/demo-machine) | Demo-as-code: YAML specs to polished product demo videos. · Cursor animation + typing simulation · FFmpeg-driven rendering pipeline | `TypeScript` `Node.js` `FFmpeg` | ⭐ 0 | `automation` `cli` `cursor-animation` `demo` `demo-as-code` `ffmpeg` `playwright` `product-demo` |
 | [`🔥 content-machine`](https://github.com/45ck/content-machine) | Automated content pipelines: generate, validate, and evaluate. · CLI-first workflow with quality gates and evals · Designed for repeatable, auditable outputs | `TypeScript` `Node.js` | ⭐ 4 | `ai-content-creation` `automation` `cli` `content-machine` `npm` `remotion` `short-form-video` `shorts` |
+| [`🔥 demo-machine`](https://github.com/45ck/demo-machine) | Demo-as-code: YAML specs to polished product demo videos. · Cursor animation + typing simulation · FFmpeg-driven rendering pipeline | `TypeScript` `Node.js` `FFmpeg` | ⭐ 0 | `automation` `cli` `cursor-animation` `demo` `demo-as-code` `ffmpeg` `playwright` `product-demo` |
 | [`Portarium`](https://github.com/45ck/Portarium) | Open-source multi-tenant control plane for governable business operations (VAOP architecture) | `TypeScript` | ⭐ 0 |  |
+| [`45ck`](https://github.com/45ck/45ck) | Config files for my GitHub profile. | `JavaScript` | ⭐ 0 | `config` `github-config` |
 | [`🔥 terraform-provider-googleforms`](https://github.com/45ck/terraform-provider-googleforms) | Terraform provider for Google Forms with optional Drive/Sheets helpers. · Infra-as-code for forms and integrations · Provider development in Go | `Go` `Terraform` | ⭐ 0 | `golang` `google-drive` `google-forms` `google-sheets` `terraform` `terraform-provider` |
 | [`🔥 terraform-provider-discord`](https://github.com/45ck/terraform-provider-discord) | Terraform provider for Discord servers (no clickops). · Infrastructure-as-code workflows for Discord · Maintained fork with practical ops focus | `Go` `Terraform` | ⭐ 0 | `devops` `discord` `golang` `hashicorp` `infrastructure-as-code` `terraform` `terraform-provider` |
 | [`claude-sdlc-plugin`](https://github.com/45ck/claude-sdlc-plugin) | Claude Code plugin for SDLC workflow automation with Storybook planning hub | `JavaScript` | ⭐ 0 |  |
@@ -79,4 +79,4 @@ I'm a **full-stack AI / product engineer**. I like building prototypes that turn
 
 ---
 
-_Last updated: 2026-02-18 03:39 UTC_
+_Last updated: 2026-02-19 01:02 UTC_

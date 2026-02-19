@@ -4,10 +4,10 @@
   "type": "module",
   "scripts": {
     "readme:update": "node scripts/update-readme.mjs",
-    "banner:render": "node scripts/render-banner-3d.mjs"
+    "banner:render": "node scripts/render-banner-3d.mjs",
+    "banner:iterate": "node scripts/iterate-banner-3d.mjs"
   },
   "devDependencies": {
     "puppeteer": "^24.1.0"
   }
 }
-
