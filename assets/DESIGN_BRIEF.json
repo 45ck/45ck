@@ -1,0 +1,24 @@
+{
+  "repo_name": "45ck",
+  "tagline": "Full-stack AI engineer. Fast prototypes, production discipline.",
+  "one_sentence_purpose": "GitHub profile README for Calvin Kennedy (@45ck), a full-stack AI and product engineer",
+  "target_users": "Recruiters, collaborators, and fellow developers visiting the GitHub profile",
+  "keywords": ["full-stack", "AI engineering", "product engineering", "developer profile"],
+  "visual_metaphors": ["circuit board traces forming the letters 45ck", "terminal window with glowing cursor and code fragments", "layered blueprint schematic of a system architecture"],
+  "avoid": ["no mascots", "no photorealism", "no clip art", "no gradients that look dated"],
+  "style_adjectives": ["minimal", "technical", "cyberpunk-inspired", "sharp", "monochromatic with accent"],
+  "palette_hint": {
+    "bg_light": "#ffffff",
+    "bg_dark": "#0d1117",
+    "primary": "#58a6ff",
+    "accent": "#f0883e",
+    "ink": "#c9d1d9"
+  },
+  "assets_needed": [
+    {"path": "assets/banner.light.png", "type": "readme_banner", "desc": "Wide banner on white background with '45ck' branding, circuit-trace motif, developer/hacker aesthetic"},
+    {"path": "assets/banner.dark.png", "type": "readme_banner", "desc": "Wide banner on dark background (#0d1117) with '45ck' branding, circuit-trace motif, developer/hacker aesthetic"},
+    {"path": "assets/logo.light.png", "type": "square_logo", "desc": "Square logo on white background featuring stylized '45ck' mark"},
+    {"path": "assets/logo.dark.png", "type": "square_logo", "desc": "Square logo on dark background featuring stylized '45ck' mark"},
+    {"path": "assets/social-preview.png", "type": "github_social_preview", "desc": "GitHub social preview card with '45ck' branding and tagline"}
+  ]
+}

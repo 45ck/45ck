@@ -4,7 +4,11 @@ Manual edits to README.md will be overwritten.
 -->
 
 <p align="center">
-  <img src="./assets/banner.gif?v=a88ed6d1cdc0" alt="Calvin Kennedy banner" width="100%" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner.dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="assets/banner.light.png" />
+    <img src="assets/banner.light.png" alt="45ck banner" width="100%" />
+  </picture>
 </p>
 
 <p align="center">
