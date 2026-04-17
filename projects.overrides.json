@@ -19,20 +19,93 @@
     {
       "name": "Vibecord",
       "url": "https://vibecord.dev",
-      "tagline": "Closed-source product (details + demos live on the site).",
-      "stack": ["TypeScript", "Node.js", "Web"],
+      "tagline": "Multi-tenant Discord bot builder + Minecraft server generation platform.",
+      "stack": ["TypeScript", "Node.js", "Prisma", "Postgres"],
       "status": "Active"
     }
   ],
   "featured": [
     {
-      "repo": "content-machine",
-      "tagline": "Automated content pipelines: generate, validate, and evaluate.",
+      "repo": "noslop",
+      "tagline": "Enforcement-first quality gate installer for 19 languages.",
       "highlights": [
-        "CLI-first workflow with quality gates and evals",
-        "Designed for repeatable, auditable outputs"
+        "One-command install of lint, format, type-check, test, coverage, and audit gates",
+        "TS, Rust, C#, Go, Python, Java, PHP, Ruby, Swift, Kotlin, C++, and more",
+        "DDD architecture with in-memory adapters; 100% coverage on covered files"
+      ],
+      "stack": ["TypeScript", "Node.js", "CLI"]
+    },
+    {
+      "repo": "prompt-language",
+      "tagline": "Programmable runtime for Claude Code.",
+      "highlights": [
+        "Persistent state, context, and control flow across agent turns",
+        "Verification hooks for deterministic agent behaviour"
+      ],
+      "stack": ["TypeScript", "Node.js", "Claude Code"]
+    },
+    {
+      "repo": "manual-qa-machine",
+      "tagline": "AI-powered manual QA: screenshots, console, and network capture at every step.",
+      "highlights": [
+        "Claude Code plugin + skill + CLI",
+        "Turns ad-hoc exploratory QA into reproducible evidence"
+      ],
+      "stack": ["TypeScript", "Node.js", "Playwright"]
+    },
+    {
+      "repo": "Portarium",
+      "tagline": "Open-source multi-tenant control plane for governable business operations.",
+      "highlights": [
+        "VAOP architecture: policy, approvals, orchestration, evidence",
+        "Sits across existing systems without replacing them"
       ],
       "stack": ["TypeScript", "Node.js"]
+    },
+    {
+      "repo": "llm-quant",
+      "tagline": "LLM-powered paper trading system with macro ETF allocation.",
+      "highlights": [
+        "Claude-driven macro allocation decisions",
+        "Tamper-evident trade ledger for evaluability"
+      ],
+      "stack": ["Python", "Claude"]
+    },
+    {
+      "repo": "skill-harness",
+      "tagline": "Umbrella installer and agent harness for the skill-pack suite.",
+      "highlights": [
+        "Unified install across Claude Code and Codex",
+        "Binds together 15+ domain skill packs (security, architecture, QA, PM, research, ...)"
+      ],
+      "stack": ["JavaScript", "Node.js"]
+    },
+    {
+      "repo": "frontier-agent-playbook",
+      "tagline": "Canonical doctrine and skills for frontier coding agents.",
+      "highlights": [
+        "Opinionated guardrails and workflows for agentic development",
+        "Reusable across Claude Code and similar harnesses"
+      ],
+      "stack": ["PowerShell", "Shell"]
+    },
+    {
+      "repo": "open-genome-agent",
+      "tagline": "Local-first DNA and VCF analysis copilot with confidence tiers.",
+      "highlights": [
+        "Evidence-bound genomics workflows",
+        "Claude and Codex support, local-first by default"
+      ],
+      "stack": ["Python", "Claude"]
+    },
+    {
+      "repo": "content-machine",
+      "tagline": "CLI-first automated short-form video generator for TikTok, Reels, and Shorts.",
+      "highlights": [
+        "Published as `@45ck/content-machine` on npm",
+        "Generate, validate, and evaluate with quality gates and evals"
+      ],
+      "stack": ["TypeScript", "Node.js", "Remotion"]
     },
     {
       "repo": "demo-machine",
@@ -63,12 +136,13 @@
     }
   ],
   "toolbox": {
-    "Languages": ["TypeScript", "JavaScript", "Go", "Python", "C#", "C++", "Java", "PHP"],
+    "Languages": ["TypeScript", "JavaScript", "Go", "Python", "Rust", "C#", "C++", "Java", "PHP"],
     "Frontend": ["Astro", "React", "Next.js", "Tailwind CSS"],
-    "Backend": ["Node.js", "Postgres", "Drizzle ORM"],
-    "AI Engineering": ["LLMs", "Agents", "Evals", "RAG", "Prompting"],
-    "Infra": ["Terraform", "AWS"],
+    "Backend": ["Node.js", "Postgres", "Prisma", "Drizzle ORM"],
+    "AI Engineering": ["LLMs", "Agents", "Evals", "RAG", "Prompting", "Claude Code", "Skills", "Plugins"],
+    "Infra": ["Terraform", "AWS", "Docker"],
     "Testing": ["Vitest", "Playwright", "Storybook"],
+    "Quality": ["noslop", "ESLint", "Prettier", "knip", "dependency-cruiser"],
     "Product": ["Stripe", "Clerk", "Resend"]
   }
 }
