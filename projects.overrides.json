@@ -2,12 +2,11 @@
   "links": {
     "portfolio": {
       "label": "Portfolio",
-      "url": "https://calvinkennedy.com",
-      "note": "domain setup in progress"
+      "url": "https://calvinkennedy.com"
     },
     "primaryEmail": {
       "label": "Email",
-      "value": "ajax@aquinus.net",
+      "value": "hello@calvinkennedy.com",
       "note": "public"
     },
     "vibecoord": {
